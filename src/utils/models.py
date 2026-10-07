@@ -1,38 +1,32 @@
 from transformers import pipeline
-import sys
-import types
-import numpy as np
 import librosa
-import torch
-import torchaudio
-
-sys.modules["torchaudio.backend"] = types.ModuleType("torchaudio.backend")
-sys.modules["torchaudio.backend.common"] = types.ModuleType("torchaudio.backend.common")
-sys.modules["torchaudio.backend.common"].AudioMetaData = object
-from df.enhance import enhance, init_df
 
 from src.utils.audio_utils import wave
 
+ASR_MODELS = {
+    "whisper-small": "distil-whisper/distil-small.en",
+    "whisper-large": "openai/whisper-large-v3",
+    "parakeet": "ai-and-i-project/parakeet-tdt-0.6b-v2-hf",
+}
+
 class Models:
     def __init__(self):
-        self.asr = pipeline(task="automatic-speech-recognition",
-                            model="distil-whisper/distil-small.en",
-                            model_kwargs={"cache_dir": "models"})
-        print("asr_freq:", self.asr.feature_extractor.sampling_rate)
-        self.df_model, self.df_state, _ = init_df(log_file=None)
+        self.asrs = [
+            pipeline(task="automatic-speech-recognition",
+                     model=model_id,
+                     model_kwargs={"cache_dir": "models"})
+            for model_id in ASR_MODELS.values()
+        ]
+        for name, asr in zip(ASR_MODELS, self.asrs):
+            print("asr_freq:", name, asr.feature_extractor.sampling_rate)
 
-    def transcribe(self, audio):
+    def transcribe(self, audio, asr):
         if audio is None:
             return ""
         sr, samples = audio
-        rate = self.asr.feature_extractor.sampling_rate
+        rate = asr.feature_extractor.sampling_rate
         waveform = librosa.resample(wave(samples), orig_sr=sr, target_sr=rate)
-        return self.asr({"array": waveform, "sampling_rate": rate})["text"]
+        return asr({"array": waveform, "sampling_rate": rate})["text"]
 
-    def denoise(self, audio):
-        if audio is None:
-            return None
-        sr, samples = audio
-        resampled = librosa.resample(wave(samples), orig_sr=sr, target_sr=self.df_state.sr())
-        denoised = enhance(self.df_model, self.df_state, torch.from_numpy(np.ascontiguousarray(resampled)).unsqueeze(0)).squeeze(0).numpy()
-        return self.df_state.sr(), (np.clip(denoised, -1, 1) * 32767).astype(np.int16)
+    def transcribe_all(self, audio):
+        return [self.transcribe(audio, asr) for asr in self.asrs]
