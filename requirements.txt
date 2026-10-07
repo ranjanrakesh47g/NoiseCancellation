@@ -1,0 +1,8 @@
+torch==2.14.1
+torchaudio==2.11.0
+transformers==5.16.0
+gradio==6.29.1
+librosa==0.11.0
+numpy==1.26.4
+pydub==0.25.1
+deepfilternet==0.5.6
