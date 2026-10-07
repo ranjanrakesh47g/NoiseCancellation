@@ -1,0 +1,49 @@
+2026-10-07 19:34:47 noise=Bird chirp snr=[('whisper-small', 11), ('whisper-large', 20), ('parakeet', 10)] audio=logs/audio/20261007_193447_Bird_chirp.wav
+2026-10-07 19:35:39 noise=Bird chirp snr=[('whisper-small', 20), ('whisper-large', 20), ('parakeet', 20)] audio=logs/audio/20261007_193539_Bird_chirp.wav
+2026-10-07 19:35:48 noise=Bird chirp snr=[('whisper-small', 6), ('whisper-large', 7), ('parakeet', 8)] audio=logs/audio/20261007_193548_Bird_chirp.wav
+2026-10-07 19:36:03 noise=Bird chirp snr=[('whisper-small', 7), ('whisper-large', 7), ('parakeet', 14)] audio=logs/audio/20261007_193603_Bird_chirp.wav
+2026-10-07 21:27:25 noise=Bird chirp snr=[('whisper-small', 20), ('whisper-large', -5), ('parakeet', 20)] audio=logs/audio/20261007_212725_Bird_chirp.wav
+2026-10-07 21:28:00 noise=Train snr=[('whisper-small', 8), ('whisper-large', -10), ('parakeet', 20)] audio=logs/audio/20261007_212800_Train.wav
+2026-10-07 21:28:06 noise=Factory machine snr=[('whisper-small', 18), ('whisper-large', -9), ('parakeet', 20)] audio=logs/audio/20261007_212806_Factory_machine.wav
+2026-10-07 21:30:00 noise=Bird chirp snr=[('whisper-small', -10), ('whisper-large', -10), ('parakeet', -10)] audio=
+2026-10-07 21:30:12 noise=Bird chirp snr=[('whisper-small', 8), ('whisper-large', 4), ('parakeet', 20)] audio=logs/audio/20261007_213012_Bird_chirp.wav
+2026-10-07 21:30:30 noise=Bird chirp snr=[('whisper-small', 14), ('whisper-large', 1), ('parakeet', 0)] audio=logs/audio/20261007_213030_Bird_chirp.wav
+2026-10-07 21:31:00 noise=Bird chirp snr=[('whisper-small', -6), ('whisper-large', -8), ('parakeet', -9)] audio=logs/audio/20261007_213100_Bird_chirp.wav
+2026-10-07 21:35:27 noise=Bird chirp snr=[('whisper-small', 20), ('whisper-large', 14), ('parakeet', -10)] audio=logs/audio/20261007_213527_Bird_chirp.wav
+
+2026-10-07 21:35:47 noise=Bird chirp snr=[('whisper-small', -3), ('whisper-large', -3), ('parakeet', -3)] audio=logs/audio/20261007_213547_Bird_chirp.wav
+
+2026-10-07 21:36:07 noise=Bird chirp snr=[('whisper-small', -3), ('whisper-large', -8), ('parakeet', -10)] audio=logs/audio/20261007_213607_Bird_chirp.wav
+
+2026-10-07 21:37:20 noise=Factory machine snr=[('whisper-small', -6), ('whisper-large', -10), ('parakeet', -10)] audio=logs/audio/20261007_213720_Factory_machine.wav
+
+2026-10-07 21:44:16 noise=Bird chirp snr=[('whisper-small', 3), ('whisper-large', 0), ('parakeet', 6)] audio=logs/audio/20261007_214416_Bird_chirp.wav
+
+2026-10-07 21:44:39 noise=Bird chirp snr=[('whisper-small', -4), ('whisper-large', 5), ('parakeet', -7)] audio=logs/audio/20261007_214439_Bird_chirp.wav
+
+2026-10-07 21:45:31 noise=Factory machine snr=[('whisper-small', -2), ('whisper-large', 4), ('parakeet', -6)] audio=logs/audio/20261007_214531_Factory_machine.wav
+
+2026-10-07 21:45:43 noise=Bird chirp snr=[('whisper-small', -10), ('whisper-large', -10), ('parakeet', -10)] audio=
+
+2026-10-07 21:49:51 noise=Bird chirp snr=[('whisper-small', 3), ('whisper-large', 19), ('parakeet', 13)] audio=logs/audio/20261007_214951_Bird_chirp.wav
+
+2026-10-07 21:56:45 noise=Bird chirp snr=[('whisper-small', 17), ('whisper-large', 17), ('parakeet', 20)] audio=logs/audio/About Trump?_Bird chirp.wav
+
+2026-10-07 21:57:05 noise=Bird chirp snr=[('whisper-small', 8), ('whisper-large', -3), ('parakeet', 6)] audio=logs/audio/Show me some news about Trump_Bird chirp.wav
+
+2026-10-07 21:57:30 noise=Factory machine snr=[('whisper-small', 0), ('whisper-large', -1), ('parakeet', -6)] audio=logs/audio/Show me some news about Trump_Factory machine.wav
+
+2026-10-07 22:05:25 noise=Bird chirp snr=[('whisper-small', 3), ('whisper-large', -1), ('parakeet', 7)] audio=logs/audio/Show me some news about Trump 2_Bird chirp.wav
+
+2026-10-07 22:05:53 noise=Factory machine snr=[('whisper-small', 7), ('whisper-large', -5), ('parakeet', 0)] audio=logs/audio/Show me some news about Trump 2_Factory machine.wav
+
+2026-10-07 22:15:54 noise=Bird chirp snr=[('whisper-small', -4), ('whisper-large', -8), ('parakeet', -4)] audio=logs/audio/Show me some news about Trump 3_Bird chirp.wav
+
+2026-10-07 22:16:09 noise=Bird chirp snr=[('whisper-small', -8), ('whisper-large', -9), ('parakeet', -9)] audio=logs/audio/Show me some water bottles from Walmart_Bird chirp.wav
+
+2026-10-07 22:16:20 noise=Factory machine snr=[('whisper-small', -7), ('whisper-large', -9), ('parakeet', -9)] audio=logs/audio/Show me some water bottles from Walmart_Factory machine.wav
+
+2026-10-07 22:16:28 noise=Traffic snr=[('whisper-small', -10), ('whisper-large', -10), ('parakeet', -10)] audio=logs/audio/Show me some water bottles from Walmart_Traffic.wav
+
+2026-10-07 22:16:39 noise=Bird chirp snr=[('whisper-small', -8), ('whisper-large', -9), ('parakeet', -9)] audio=logs/audio/Show me some water bottles from Walmart_Bird chirp.wav
+

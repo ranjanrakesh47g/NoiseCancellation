@@ -1,3 +1,5 @@
+import re
+import time
 import numpy as np
 import librosa
 from pydub import AudioSegment
@@ -33,3 +35,50 @@ def mix(audio, snr_db, noise):
     gain_db = speech_db - clip.dBFS - float(snr_db)
     mixed = mixed.overlay(clip.apply_gain(gain_db))
     return mixed.frame_rate, np.array(mixed.get_array_of_samples(), dtype=np.int16)
+
+def levenshtein(a, b):
+    prev = list(range(len(b) + 1))
+    for i, ca in enumerate(a, 1):
+        curr = [i]
+        for j, cb in enumerate(b, 1):
+            curr.append(min(prev[j] + 1, curr[-1] + 1, prev[j - 1] + (ca != cb)))
+        prev = curr
+    return prev[-1]
+
+_PUNCT = re.compile(r"[^\w\s]|_")
+
+def comparable(text):
+    return _PUNCT.sub("", text.lower())
+
+def transcript_limit(original):
+    n = len(original)
+    return 0 if n <= 2 else 1 if n <= 5 else 2 if n <= 10 else 3
+
+def match_snr(audio, noise, original_transcript, asr, transcribe):
+    lo, hi, best, text = -10, 20, 20, ""
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        noisy_transcript = transcribe(mix(audio, mid, noise), asr)
+        noisy, original = comparable(noisy_transcript), comparable(original_transcript)
+        if levenshtein(noisy, original) <= transcript_limit(original):
+            best, text = mid, noisy_transcript
+            hi = mid - 1
+        else:
+            if mid == 20:
+                text = noisy_transcript
+            lo = mid + 1
+    return best, text
+
+def transcribe_mix(audio, noise, snr_db, asr, transcribe):
+    noisy = mix(audio, snr_db, noise)
+    return noisy, transcribe(noisy, asr)
+
+def match_all(audio, noise, originals, asrs, transcribe):
+    from src.utils.logging import latency_ms
+    found, latencies = [], []
+    for original, asr in zip(originals, asrs):
+        start = time.perf_counter()
+        found.append(match_snr(audio, noise, original, asr, transcribe))
+        latencies.append(latency_ms(start))
+    snrs, texts = zip(*found)
+    return [*snrs, mix(audio, snrs[0], noise), *texts], latencies

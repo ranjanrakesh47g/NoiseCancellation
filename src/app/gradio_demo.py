@@ -1,8 +1,8 @@
 import os
-import re
+import time
 import gradio as gr
-
-from src.utils.audio_utils import CLIPS, mix
+from src.utils.audio_utils import CLIPS, match_all, transcribe_mix
+from src.utils.logging import latency_ms, log_result, save_wav
 from src.utils.models import ASR_MODELS, Models
 
 TRANSCRIPTION_CSS = """
@@ -18,56 +18,28 @@ TRANSCRIPTION_CSS = """
 .transcription-row > .form > .block { flex: 1; min-width: 0; }
 """
 
-def levenshtein(a, b):
-    prev = list(range(len(b) + 1))
-    for i, ca in enumerate(a, 1):
-        curr = [i]
-        for j, cb in enumerate(b, 1):
-            curr.append(min(prev[j] + 1, curr[-1] + 1, prev[j - 1] + (ca != cb)))
-        prev = curr
-    return prev[-1]
-
-_PUNCT = re.compile(r"[^\w\s]|_")
-
-def comparable(text):
-    return _PUNCT.sub("", text.lower())
-
-def transcript_limit(original):
-    n = len(original)
-    return 0 if n <= 2 else 1 if n <= 5 else 2 if n <= 10 else 3
-
 class Demo:
     def __init__(self):
         self.models = None
         self.app = None
+        self.audio_path = ""
+        self.latencies = []
 
-    def match_snr(self, audio, noise, original_transcript, asr):
-        lo, hi, best, text = -10, 20, 20, ""
-        while lo <= hi:
-            mid = (lo + hi) // 2
-            noisy_transcript = self.models.transcribe(mix(audio, mid, noise), asr)
-            noisy, original = comparable(noisy_transcript), comparable(original_transcript)
-            if levenshtein(noisy, original) <= transcript_limit(original):
-                best, text = mid, noisy_transcript
-                hi = mid - 1
-            else:
-                if mid == 20:
-                    text = noisy_transcript
-                lo = mid + 1
-        return best, text
-
-    def refresh_one(self, audio, noise, snr_db, index):
-        noisy = mix(audio, snr_db, noise)
-        return noisy, self.models.transcribe(noisy, self.models.asrs[index])
-
-    def refresh(self, audio, noise, *originals):
-        found = [self.match_snr(audio, noise, original, asr) for original, asr in zip(originals, self.models.asrs)]
-        snrs, texts = zip(*found)
-        return [*snrs, mix(audio, snrs[0], noise), *texts]
+    def on_noise(self, audio, noise, *originals):
+        result, self.noise_latencies = match_all(audio, noise, originals, self.models.asrs, self.models.transcribe)
+        log_result(noise, result, self.audio_path, originals, self.noise_latencies)
+        return result
 
     def on_audio(self, audio, noise):
-        originals = self.models.transcribe_all(audio)
-        return [*originals, *self.refresh(audio, noise, *originals)]
+        originals, self.latencies = [], []
+        for asr in self.models.asrs:
+            start = time.perf_counter()
+            originals.append(self.models.transcribe(audio, asr))
+            self.latencies.append(latency_ms(start))
+        self.audio_path = save_wav(audio, originals[0] if originals else "", counted=True)
+        result, _ = match_all(audio, noise, originals, self.models.asrs, self.models.transcribe)
+        log_result(noise, result, self.audio_path, originals, self.latencies)
+        return [*originals, *result]
 
     def panel(self, source):
         audio = gr.Audio(sources=source, type="numpy", label="Clean speech")
@@ -86,9 +58,9 @@ class Demo:
         clear.click(lambda: (None, *[""] * len(ASR_MODELS), next(iter(CLIPS)), None, *([5] * len(ASR_MODELS)), *[""] * len(ASR_MODELS)), outputs=[audio, *clean_texts, noise, noisy, *snrs, *noisy_texts])
         event = audio.stop_recording if source == "microphone" else audio.upload
         event(self.on_audio, [audio, noise], [*clean_texts, *snrs, noisy, *noisy_texts])
-        noise.change(self.refresh, [audio, noise, *clean_texts], [*snrs, noisy, *noisy_texts], show_progress="hidden")
+        noise.change(self.on_noise, [audio, noise, *clean_texts], [*snrs, noisy, *noisy_texts], show_progress="hidden")
         for index, snr in enumerate(snrs):
-            snr.input(lambda audio, noise, snr_db, index=index: self.refresh_one(audio, noise, snr_db, index), [audio, noise, snr], [noisy, noisy_texts[index]], show_progress="hidden", trigger_mode="always_last")
+            snr.input(lambda audio, noise, snr_db, index=index: transcribe_mix(audio, noise, snr_db, self.models.asrs[index], self.models.transcribe), [audio, noise, snr], [noisy, noisy_texts[index]], show_progress="hidden", trigger_mode="always_last")
 
     def build(self):
         with gr.Blocks() as microphone:
