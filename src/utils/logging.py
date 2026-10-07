@@ -9,10 +9,6 @@ from src.utils.models import ASR_MODELS
 
 os.makedirs("logs/audio", exist_ok=True)
 
-def write_log(filename, message):
-    with open(f"logs/{filename}", "a", encoding="utf-8") as handle:
-        handle.write(f"{datetime.now():%Y-%m-%d %H:%M:%S} {message}\n\n")
-
 def save_wav(audio, label, counted=False):
     if audio is None:
         return ""
@@ -43,7 +39,6 @@ def log_result(noise, result, audio_path, originals, latencies):
     name = os.path.splitext(os.path.basename(audio_path))[0] if audio_path else "audio"
     noisy_path = save_wav(noisy, f"{name}_{noise}")
     latencies = [*latencies, *([None] * n)][:n]
-    write_log("app.log", f"noise={noise} snr={list(zip(ASR_MODELS, snrs))} audio={noisy_path}")
     record = {
         "time": f"{datetime.now():%Y-%m-%d %H:%M:%S}",
         "audio_path": audio_path,

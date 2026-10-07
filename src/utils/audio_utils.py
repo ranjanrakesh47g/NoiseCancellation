@@ -5,10 +5,10 @@ import librosa
 from pydub import AudioSegment
 
 CLIPS = {
-    "Bird chirp": "noise/bird.wav",
-    "Train": "noise/train.wav",
-    "Traffic": "noise/traffic.wav",
-    "Factory machine": "noise/machine.wav",
+    "Claps & Cheers": "noise/claps.wav",
+    "Traffic & Wind": "noise/traffic_wind.wav",
+    "Retail Ambient Noise": "noise/retail.wav",
+    "Bird Chirp": "noise/bird.wav",
 }
 
 def wave(samples):
