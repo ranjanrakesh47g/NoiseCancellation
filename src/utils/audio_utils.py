@@ -18,7 +18,7 @@ def audio_segment(samples, sr):
     pcm = (np.clip(samples, -1, 1) * 32767).astype(np.int16)
     return AudioSegment(pcm.tobytes(), frame_rate=int(sr), sample_width=2, channels=1)
 
-def mix(audio, snr_db, *flags):
+def mix(audio, snr_db, noise):
     if audio is None:
         return None
     sr, samples = audio
@@ -27,12 +27,9 @@ def mix(audio, snr_db, *flags):
         return None
     mixed = audio_segment(speech, sr)
     speech_db = mixed.dBFS
-    for noise_path, selected in zip(CLIPS.values(), flags):
-        if not selected:
-            continue
-        noise, _ = librosa.load(noise_path, sr=sr, mono=True)
-        noise = np.tile(noise, int(np.ceil(len(speech) / len(noise))))[:len(speech)]
-        clip = audio_segment(noise, sr)
-        gain_db = speech_db - clip.dBFS - float(snr_db)
-        mixed = mixed.overlay(clip.apply_gain(gain_db))
+    clip_wave, _ = librosa.load(CLIPS[noise], sr=sr, mono=True)
+    clip_wave = np.tile(clip_wave, int(np.ceil(len(speech) / len(clip_wave))))[:len(speech)]
+    clip = audio_segment(clip_wave, sr)
+    gain_db = speech_db - clip.dBFS - float(snr_db)
+    mixed = mixed.overlay(clip.apply_gain(gain_db))
     return mixed.frame_rate, np.array(mixed.get_array_of_samples(), dtype=np.int16)
