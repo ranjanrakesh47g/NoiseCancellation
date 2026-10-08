@@ -9,20 +9,21 @@ from src.utils.models import ASR_MODELS
 
 os.makedirs("logs/audio", exist_ok=True)
 
-def save_wav(audio, label, counted=False):
+def save_wav(audio, label, counted=False, directory="logs/audio"):
     if audio is None:
         return ""
     sr, samples = audio
     pcm = samples
     if str(getattr(samples, "dtype", "")) != "int16" or getattr(samples, "ndim", 1) != 1:
         pcm = (mono(samples).clip(-1, 1) * 32767).astype("int16")
+    os.makedirs(directory, exist_ok=True)
     if counted:
         safe = " ".join(str(label).replace("/", " ").split()).rstrip(".")[:120].rstrip() or "audio"
-        path, count = f"logs/audio/{safe}.wav", 2
+        path, count = f"{directory}/{safe}.wav", 2
         while os.path.exists(path):
-            path, count = f"logs/audio/{safe} {count}.wav", count + 1
+            path, count = f"{directory}/{safe} {count}.wav", count + 1
     else:
-        path = f"logs/audio/{label}.wav"
+        path = f"{directory}/{label}.wav"
     with wave.open(path, "wb") as handle:
         handle.setnchannels(1)
         handle.setsampwidth(2)

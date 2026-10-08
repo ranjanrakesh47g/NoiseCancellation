@@ -1,6 +1,11 @@
 torch==2.14.1
 transformers==5.16.0
+datasets==5.1.0
+python-dotenv==1.2.4
+jiwer==4.0.0
+openai-whisper==20250625
 gradio==6.29.1
 librosa==0.11.0
 numpy==1.26.4
+matplotlib==3.9.4
 pydub==0.25.1
