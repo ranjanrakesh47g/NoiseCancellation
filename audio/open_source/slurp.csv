@@ -1,0 +1,101 @@
+group,intent,text,audio
+news,news_query,what is the exchange rate of us dollar to pound sterling,audio/open_source/what is the exchange rate of us dollar to pound sterling.wav
+news,news_query,what is the exchange rate of us dollar to pound sterling,audio/open_source/what is the exchange rate of us dollar to pound sterling 2.wav
+news,news_query,find me info on cars,audio/open_source/find me info on cars.wav
+news,news_query,find me info on cars,audio/open_source/find me info on cars 2.wav
+news,news_query,find me info on cars,audio/open_source/find me info on cars 3.wav
+news,news_query,find me info on cars,audio/open_source/find me info on cars 4.wav
+news,news_query,get me the popular news from bbc,audio/open_source/get me the popular news from bbc.wav
+news,news_query,get me the popular news from bbc,audio/open_source/get me the popular news from bbc 2.wav
+news,news_query,set notification from world news,audio/open_source/set notification from world news.wav
+news,news_query,set notification from world news,audio/open_source/set notification from world news 2.wav
+news,news_query,i want to hear the last news from cnn,audio/open_source/i want to hear the last news from cnn.wav
+news,news_query,i want to hear the last news from cnn,audio/open_source/i want to hear the last news from cnn 2.wav
+news,news_query,i want to hear the last news from cnn,audio/open_source/i want to hear the last news from cnn 3.wav
+news,news_query,i want to hear the last news from cnn,audio/open_source/i want to hear the last news from cnn 4.wav
+news,news_query,i want to know everything that breaks about the dam breaking in california,audio/open_source/i want to know everything that breaks about the dam breaking in california.wav
+news,news_query,show me news about the environment,audio/open_source/show me news about the environment.wav
+news,news_query,show me news about the environment,audio/open_source/show me news about the environment 2.wav
+news,news_query,tell me about the new foreign policy of trump,audio/open_source/tell me about the new foreign policy of trump.wav
+news,news_query,tell me about the new foreign policy of trump,audio/open_source/tell me about the new foreign policy of trump 2.wav
+news,news_query,here's the truth about meals on wheels in someone's budget,audio/open_source/here's the truth about meals on wheels in someone's budget.wav
+news,news_query,here's the truth about meals on wheels in someone's budget,audio/open_source/here's the truth about meals on wheels in someone's budget 2.wav
+news,news_query,here's the truth about meals on wheels in someone's budget,audio/open_source/here's the truth about meals on wheels in someone's budget 3.wav
+news,news_query,here's the truth about meals on wheels in someone's budget,audio/open_source/here's the truth about meals on wheels in someone's budget 4.wav
+news,news_query,here's the truth about meals on wheels in someone's budget,audio/open_source/here's the truth about meals on wheels in someone's budget 5.wav
+news,news_query,what's happening around the world,audio/open_source/what's happening around the world.wav
+news,news_query,what's happening around the world,audio/open_source/what's happening around the world 2.wav
+news,news_query,what's happening around the world,audio/open_source/what's happening around the world 3.wav
+news,news_query,what's happening around the world,audio/open_source/what's happening around the world 4.wav
+news,news_query,what's happening around the world,audio/open_source/what's happening around the world 5.wav
+news,news_query,what's happening around the world,audio/open_source/what's happening around the world 6.wav
+news,news_query,what's sensational in time of india,audio/open_source/what's sensational in time of india.wav
+news,news_query,what's sensational in time of india,audio/open_source/what's sensational in time of india 2.wav
+news,news_query,what's sensational in time of india,audio/open_source/what's sensational in time of india 3.wav
+news,news_query,what's sensational in time of india,audio/open_source/what's sensational in time of india 4.wav
+news,news_query,what's sensational in time of india,audio/open_source/what's sensational in time of india 5.wav
+news,news_query,what's sensational in time of india,audio/open_source/what's sensational in time of india 6.wav
+news,news_query,tell me some business news,audio/open_source/tell me some business news.wav
+news,news_query,tell me some business news,audio/open_source/tell me some business news 2.wav
+news,news_query,tell me some business news,audio/open_source/tell me some business news 3.wav
+news,news_query,tell me some business news,audio/open_source/tell me some business news 4.wav
+news,news_query,tell me some business news,audio/open_source/tell me some business news 5.wav
+news,news_query,tell me some business news,audio/open_source/tell me some business news 6.wav
+news,news_query,tell me some business news,audio/open_source/tell me some business news 7.wav
+news,news_query,keep me informed about bitcoin price,audio/open_source/keep me informed about bitcoin price.wav
+news,news_query,keep me informed about bitcoin price,audio/open_source/keep me informed about bitcoin price 2.wav
+news,news_query,keep me informed about bitcoin price,audio/open_source/keep me informed about bitcoin price 3.wav
+news,news_query,keep me informed about bitcoin price,audio/open_source/keep me informed about bitcoin price 4.wav
+news,news_query,keep me informed about bitcoin price,audio/open_source/keep me informed about bitcoin price 5.wav
+news,news_query,keep me informed about bitcoin price,audio/open_source/keep me informed about bitcoin price 6.wav
+news,news_query,what's the latest news on cnn,audio/open_source/what's the latest news on cnn.wav
+ecommerce,lists_remove,take out the milk from the shopping list,audio/open_source/take out the milk from the shopping list.wav
+ecommerce,lists_remove,take out the milk from the shopping list,audio/open_source/take out the milk from the shopping list 2.wav
+ecommerce,lists_query,say the list,audio/open_source/say the list.wav
+ecommerce,lists_query,say the list,audio/open_source/say the list 2.wav
+ecommerce,lists_query,say the list,audio/open_source/say the list 3.wav
+ecommerce,lists_query,i have my clothes list,audio/open_source/i have my clothes list.wav
+ecommerce,lists_query,i have my clothes list,audio/open_source/i have my clothes list 2.wav
+ecommerce,lists_query,what items are on my shopping list,audio/open_source/what items are on my shopping list.wav
+ecommerce,lists_query,what items are on my shopping list,audio/open_source/what items are on my shopping list 2.wav
+ecommerce,lists_query,remind me of how many lists i have,audio/open_source/remind me of how many lists i have.wav
+ecommerce,lists_query,remind me of how many lists i have,audio/open_source/remind me of how many lists i have 2.wav
+ecommerce,lists_query,remind me of how many lists i have,audio/open_source/remind me of how many lists i have 3.wav
+ecommerce,lists_query,remind me of how many lists i have,audio/open_source/remind me of how many lists i have 4.wav
+ecommerce,lists_createoradd,add business contacts to contact list,audio/open_source/add business contacts to contact list.wav
+ecommerce,lists_createoradd,add business contacts to contact list,audio/open_source/add business contacts to contact list 2.wav
+ecommerce,lists_createoradd,please find all name start with alphabetic of a and create a list,audio/open_source/please find all name start with alphabetic of a and create a list.wav
+ecommerce,lists_remove,delete item,audio/open_source/delete item.wav
+ecommerce,lists_remove,delete item,audio/open_source/delete item 2.wav
+ecommerce,lists_remove,delete item,audio/open_source/delete item 3.wav
+ecommerce,lists_remove,delete item,audio/open_source/delete item 4.wav
+ecommerce,lists_remove,delete item,audio/open_source/delete item 5.wav
+ecommerce,lists_remove,delete item,audio/open_source/delete item 6.wav
+ecommerce,lists_remove,delete item,audio/open_source/delete item 7.wav
+ecommerce,lists_remove,delete item,audio/open_source/delete item 8.wav
+ecommerce,lists_remove,delete item,audio/open_source/delete item 9.wav
+ecommerce,lists_remove,delete item,audio/open_source/delete item 10.wav
+ecommerce,lists_remove,delete item,audio/open_source/delete item 11.wav
+ecommerce,lists_remove,delete item,audio/open_source/delete item 12.wav
+ecommerce,lists_remove,delete item,audio/open_source/delete item 13.wav
+ecommerce,lists_remove,delete item,audio/open_source/delete item 14.wav
+ecommerce,lists_remove,delete item,audio/open_source/delete item 15.wav
+ecommerce,lists_remove,delete item,audio/open_source/delete item 16.wav
+ecommerce,lists_remove,delete item,audio/open_source/delete item 17.wav
+ecommerce,lists_remove,delete item,audio/open_source/delete item 18.wav
+ecommerce,lists_remove,delete item,audio/open_source/delete item 19.wav
+ecommerce,lists_remove,delete item,audio/open_source/delete item 20.wav
+ecommerce,lists_remove,delete item,audio/open_source/delete item 21.wav
+ecommerce,lists_remove,delete item,audio/open_source/delete item 22.wav
+ecommerce,lists_createoradd,add detergent to the list of things i need to buy,audio/open_source/add detergent to the list of things i need to buy.wav
+ecommerce,lists_createoradd,add detergent to the list of things i need to buy,audio/open_source/add detergent to the list of things i need to buy 2.wav
+ecommerce,lists_createoradd,add detergent to the list of things i need to buy,audio/open_source/add detergent to the list of things i need to buy 3.wav
+ecommerce,lists_remove,olly clear the list,audio/open_source/olly clear the list.wav
+ecommerce,takeaway_query,olly does shibaru sushi deliver,audio/open_source/olly does shibaru sushi deliver.wav
+ecommerce,takeaway_query,olly does shibaru sushi deliver,audio/open_source/olly does shibaru sushi deliver 2.wav
+ecommerce,takeaway_query,olly does shibaru sushi deliver,audio/open_source/olly does shibaru sushi deliver 3.wav
+ecommerce,takeaway_query,olly does shibaru sushi deliver,audio/open_source/olly does shibaru sushi deliver 4.wav
+ecommerce,takeaway_query,olly does shibaru sushi deliver,audio/open_source/olly does shibaru sushi deliver 5.wav
+ecommerce,lists_createoradd,add this to the list,audio/open_source/add this to the list.wav
+ecommerce,takeaway_query,is the last order is ready,audio/open_source/is the last order is ready.wav
+ecommerce,takeaway_query,is the last order is ready,audio/open_source/is the last order is ready 2.wav
