@@ -1,0 +1,8 @@
+model,source,median wer (%),median cer (%),median latency (ms),cost ($/hr)
+whisper-small,open-source,20.8,12.2,81.0,0.0
+whisper-large,open-source,8.1,5.5,623.5,0.0
+parakeet,open-source,14.1,7.6,40.5,0.0
+deepgram,paid,13.8,8.8,1947.5,0.258
+elevenlabs,paid,7.6,5.1,1498.5,0.22
+assemblyai,paid,6.5,3.4,1388.0,0.15
+speechmatics,paid,8.2,4.5,2627.0,0.23
