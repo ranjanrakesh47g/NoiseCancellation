@@ -9,6 +9,8 @@ Two sources are used.
 - Recorded speech is captured with `src/app/gradio_record.py`. On submit, the recorded clean clip is stored under `audio/recorded/clean`. The same clip is then mixed with three noise clips — claps and cheers, traffic and wind, and retail ambient noise — at SNR levels of −5, 0, 5, and 10 dB. Those files are stored under `audio/recorded/noisy`. A lower SNR corresponds to louder noise. Mixing is implemented in `src/utils/audio_utils.py`.
 - Open-source speech comes from the SLURP test set (`qmeeus/slurp`). News queries (`news_query`) and ecommerce queries (`lists_createoradd`, `lists_query`, `lists_remove`, `takeaway_order`, and `takeaway_query`) are used. Clips are cached as wav files under `audio/open_source`, with an index in `audio/open_source/slurp.csv`.
 
+
+
 ## Models
 
 Three open-source models are loaded locally with Hugging Face `transformers` and cached under `models/`:
@@ -27,6 +29,8 @@ Four commercial APIs are also evaluated. Each service requires an API key in `.e
 - ElevenLabs Scribe v2
 - AssemblyAI Universal-3.5 Pro
 - Speechmatics Enhanced
+
+
 
 ## Evaluation
 
@@ -48,16 +52,24 @@ Median word error rate, character error rate, and latency across groups are take
 | speechmatics  | paid        | 8.4            | 4.5            | 2370.0              | 0.23        |
 
 
+
+
 ## Findings
+
+
 
 ### Open-source
 
 - Whisper-large is the most accurate of the three local models and the closest to the commercial APIs.
 - For low-latency applications, Parakeet is a suitable choice. It is the fastest model and more accurate than Whisper-small.
 
+
+
 ### Commercial
 
-- AssemblyAI has the lowest median error rates and the lowest batch rate among the paid services ($0.15/hr).
+- AssemblyAI has the lowest median error rates among all options and the lowest batch rate among the paid services ($0.15/hr).
+
+
 
 ## Setup
 
